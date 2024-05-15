@@ -15,6 +15,9 @@ lock = threading.Lock()
 html_list = []
 # pool = concurrent.futures.ThreadPoolExecutor(max_workers=5)
 
+with open("estensioni.txt", "r") as file:
+    estensioni = [line.strip() for line in file]
+
 errore = 0
 eccezione = 0
 done = 0
@@ -23,12 +26,10 @@ risposte = {}
 
 def format_site(sito):
     sito = sito.replace(" ", "")
-    if not (sito.endswith(".it") or sito.endswith(".com") or sito.endswith(".org") or sito.endswith(".shop")):
-        sito += ".it"
+    if not any(sito.endswith(ext) for ext in estensioni):
+         sito += ".it"
     if not sito.startswith("http://") and not sito.startswith("https://"):
         sito = "http://" + sito
-    # elif sito.startswith("http://"):
-    #     str(list(sito).insert(4, "s"))
     return sito
 
 
@@ -39,7 +40,7 @@ def do_request(sito):
         if response.status_code == 200:
             risposte[sito] = response.status_code
             # html_list.append(response.text)
-            print(f"HTML ottenuto per {sito}")
+            #print(f"HTML ottenuto per {sito}")
             global done
             with lock:
                 done += 1
@@ -63,17 +64,18 @@ def do_request(sito):
             eccezione += 1
 
 
-# initialize ThreadPoolExecutor and use it to call parse_page() in parallel
+#Initialize ThreadPoolExecutor and use it to call parse_page() in parallel
 with ThreadPoolExecutor(max_workers=20) as executor:
-    executor.map(do_request, siti_web)
+    executor.map(do_request, siti_web[:200])
 
-# for sito in siti_web:
-#     parsed = format_site(sito)
-#     if done == 50:
-#         break
-#     pool.submit(do_request(parsed))
-
-# pool.shutdown(wait=True)
+#Tempistiche
 print("--- %s seconds ---" % (time.time() - start_time))
 print(f"\nRecuperati: {done}\nErrori:{errore}\nTimeout: {time_out}\nEccezioni:{eccezione}")
-print(risposte)
+
+# Creazione di un DataFrame da un dizionario
+df_finale = pd.DataFrame(list(risposte.items()), columns=["Url", "Status"])
+
+# Salvataggio del DataFrame in un file Excel
+df_finale.to_excel("risposte.xlsx", index=False)
+
+
