@@ -1,4 +1,7 @@
-.aero	
+.html
+.htm
+.pdf
+.aero
 .asia	
 .biz	
 .cat	
