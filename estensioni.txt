@@ -274,4 +274,14 @@
 .yu
 .za
 .zm
-.zw	
+.zw
+.shop
+.store
+.moda
+.site
+.fashion
+.fund
+.surf
+.shoes
+.swiss
+.works

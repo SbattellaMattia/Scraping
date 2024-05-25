@@ -1,156 +1,97 @@
-import threading
+import time
 from concurrent.futures import ThreadPoolExecutor
+
 import pandas as pd
 import requests
-import time
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, SoupStrainer
+
+from model.web_page import WebPage, Status
 
 start_time = time.time()
-
-KEYWORD = "blockchain"
-
-total = 0
-lock_total = threading.Lock()
-
-done = 0
-lock_done = threading.Lock()
-
-time_out = 0
-lock_time_out = threading.Lock()
-
-errore = 0
-lock_errore = threading.Lock()
-
-eccezione = 0
-lock_eccezione = threading.Lock()
-
-risposte = {}
-
-second_iteration = False
-secondary_links = []
-
-trovati = []
-retry = []
+KEYWORDS = ['blockchain', 'smart contract']
+TIMEOUT_LIMIT = 5
 
 
-def find_keyword(html):
-    if KEYWORD in html:
-        return True
-    else:
-        return False
+def find_keyword(html: str) -> bool:
+    """
+    The policy to determine whether the site cites the blockchain technology
+    :param html: the the web page to analyse
+    :return: whether the site cites the blockchain technology
+    """
+    return any(e in html.lower() for e in KEYWORDS)
 
 
-def find_links(html,sito):
-    soup = BeautifulSoup(html, "html.parser")
-    links = soup.find_all("a", href=True)
-    links_to_other_pages = []
+def find_links(html: str, sito: str) -> set:
+    """
+    List the links found in the provided html page
+    :param html: the web page to analyse
+    :param sito: the url of the web page
+    :return: the links found in the page
+    """
+    links = BeautifulSoup(html, parse_only=SoupStrainer('a'), parser='html.parser').find_all('a', href=True)
+    valid_links = []
 
-    for link in links:
-        href = link["href"]
-        if href.endswith(".html") or href.endswith(".htm") or href.endswith(".pdf"):
-            if not href.startswith("http://") and not href.startswith("https://"):
-                href = "https://" + sito
-            links_to_other_pages.append(href)
-    return links_to_other_pages
-
-
-def format_site(sito, estensioni):
-    sito = sito.replace(" ", "")
-    if not any(sito.endswith(ext) for ext in estensioni):
-        sito += ".it"
-    if not sito.startswith("http://") and not sito.startswith("https://"):
-        sito = "http://" + sito
-    return sito
+    for link in map(lambda e: e["href"], links):
+        if '.' not in link or any(link.endswith(e) for e in ['.html', '.htm', '.pdf']):
+            if link.startswith('http'):
+                valid_links.append(link)
+            elif link.startswith('/'):
+                valid_links.append(sito + link)
+    return set(valid_links)
 
 
-def initialize():
-    df = pd.read_excel("Imprese.xlsx")
-    siti_web = df["Website"].tolist()
-    parsed_siti_web = []
-
-    with open("estensioni.txt", "r") as file:
-        estensioni = [line.strip() for line in file]
-
-        for sito in siti_web:
-            parsed_siti_web.append(format_site(sito, estensioni))
-    return parsed_siti_web
+def print_progress() -> None:
+    """
+    Prints current progress along with ETA
+    """
+    progress = len(list(filter(lambda it: it.is_done, web_pages))) / len(web_pages)
+    print(
+        f'{round(progress * 100)}% ETA: {round((time.time() - start_time) * (1 - progress) / progress, 2)}sec')
 
 
-def reformat(links):
-    for link in links:
-        str(list(link).insert(4, "s"))
-
-
-def do_request(sito):
-    global total
-    with lock_total:
-        total += 1
+def do_request(web_page: WebPage):
     try:
-        response = requests.get(sito, timeout=30)
+        response = requests.get(web_page.url, timeout=TIMEOUT_LIMIT, verify=False, headers={
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0'})
+        web_page.status = Status.SUCCESS
+        web_page.code = response.status_code
+        body = response.text.split('<body>')[1].split('')[0] if all(
+            e in response.text for e in ['<body>', '</body>']) else str(BeautifulSoup(response.text, 'lxml').body)
         if response.status_code == 200:
-            if find_keyword(response.text.lower()):
-                # risposte[sito] = response.status_code, True
-                trovati.append(sito)
-            elif not second_iteration:
-                for link in find_links(response.text,sito):
-                    if not link in secondary_links:
-                        secondary_links.append(link)
-            print(f"HTML ottenuto per {sito}")
-            global done
-            with lock_done:
-                done += 1
+            web_page.has_keyword = find_keyword(body)
+            if web_page.recursive:
+                web_page.recursive = False
+                new_links = find_links(body, web_page.url)
+                print(web_page.url, len(new_links))
+                web_pages.extend(list(map(lambda url: WebPage(url, False), new_links))[:10])
         else:
-            if response.status_code == 403:
-                retry.append(sito)
-            else:
-                risposte[sito] = response.status_code
-                global errore
-                with lock_errore:
-                    errore += 1
+            if web_page.status != Status.RETRY and response.status_code == 403:
+                web_page.status = Status.RETRY
     except requests.exceptions.Timeout:
-        # print("Timed out")
-        risposte[sito] = "TIMEOUT"
-        global time_out
-        with lock_time_out:
-            time_out += 1
+        web_page.status = Status.TIMEOUT
     except Exception as e:
-        if "HTTPS" in e:
-            retry.append(sito)
-        else:
-            risposte[sito] = str(e)
-            global eccezione
-            with lock_eccezione:
-                eccezione += 1
-        # risposte[sito] = str(e)
-        # global eccezione
-        # with lock_eccezione:
-        #     eccezione += 1
-
-def parallel_request(method, list):
-    # Initialize ThreadPoolExecutor and use it to call parse_page() in parallel
-    with ThreadPoolExecutor(max_workers=15) as executor:
-        executor.map(method, list)
+        print(str(e))
+        web_page.status = Status.ERROR
+    print_progress()
 
 
-siti_web = initialize()
-parallel_request(do_request, siti_web[:10])
+if __name__ == '__main__':
+    imprese_df = pd.read_excel('Imprese.xlsx')
+    web_pages = list(
+        map(lambda url: WebPage(url, True), set(imprese_df['Website'].tolist()[:])))
+    while any(not e.is_done for e in web_pages):
+        with ThreadPoolExecutor(max_workers=64) as executor:
+            executor.map(do_request, web_pages[:])
 
-parallel_request(do_request, retry)
+    # Tempistiche
+    print("--- %s seconds ---" % (time.time() - start_time))
+    print(
+        f"\nTotali: {len(web_pages)}"
+        f"\nSuccess: {len(list(filter(lambda e: e.status == Status.SUCCESS, web_pages)))}"
+        f"\nError: {len(list(filter(lambda e: e.status == Status.ERROR, web_pages)))}"
+        f"\nTimeout: {len(list(filter(lambda e: e.status == Status.TIMEOUT, web_pages)))}"
+        f"\nFound: {len(list(filter(lambda e: e.has_keyword, web_pages)))}"
+        f"\nWeb page is down: {len(list(filter(lambda e: e.has_error, web_pages)))}")
 
-second_iteration = True
-parallel_request(do_request, secondary_links)
-
-
-
-
-# Tempistiche
-print("--- %s seconds ---" % (time.time() - start_time))
-print(f"Totali:\n\t-Iterazioni: {total}\n\t-Siti web: {len(siti_web)}\n\t-Link: {len(secondary_links)}\n\t-Retry: {len(retry)} \nRecuperati: {done}\nErrori:{errore}\nTimeout: {time_out}\nEccezioni non considerate:{eccezione}")
-
-# Creazione di un DataFrame da un dizionario
-df_finale = pd.DataFrame(list(risposte.items()), columns=["Url", "Status"])
-df_trovati = pd.DataFrame(trovati, columns=["Url"])
-
-# Salvataggio del DataFrame in un file Excel
-df_finale.to_excel("risposte.xlsx", index=False)
-df_trovati.to_excel("trovati.xlsx", index=False)
+    pd.DataFrame([vars(e) for e in (list(filter(lambda e: e.status == Status.SUCCESS, web_pages)))]).to_csv(
+        'output.csv')
