@@ -6,15 +6,20 @@ class Status(Enum):
     ERROR = 2,
     TIMEOUT = 3,
     RETRY = 4,
+    NO_MORE_NEEDED =5,
 
 
 class WebPage:
-    def __init__(self, url: str, depth: int = 1):
+    def __init__(self, url: str, parent: 'WebPage' = None):
         self.url = url
-        self.depth: int = depth
+        self.parent: WebPage | None = parent
         self.status: Status | None = None
         self.code: int | None = None
         self.has_keyword: bool = False
+
+    @property
+    def depth(self) -> int:
+        return (self.parent.depth if self.has_parent else 0) + 1
 
     @property
     def url(self) -> str:
@@ -40,3 +45,7 @@ class WebPage:
     def has_error(self) -> bool:
         """Determines whether the request has been evaluated and the server answered unsuccessfully"""
         return type(self.code) is int and not 300 > self.code >= 200
+
+    @property
+    def has_parent(self) -> bool:
+        return self.parent is not None
