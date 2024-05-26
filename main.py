@@ -1,3 +1,4 @@
+import threading
 import time
 from concurrent.futures import ThreadPoolExecutor
 
@@ -15,8 +16,10 @@ TIME_LIMIT = 5
 # The limit of recursive analysis of links within pages
 DEPTH_LIMIT = 2
 # How many thread are being used
-NUM_THREADS = 1
+NUM_THREADS = 16
 start_time = time.time()
+web_pages_with_keyword = []
+lock_web_pages_with_keyword = threading.Lock()
 
 
 def find_keyword(html: str) -> bool:
@@ -60,7 +63,7 @@ def print_progress() -> None:
 
 
 def do_request(web_page: WebPage):
-    if web_page.has_parent and web_page.parent.has_keyword:
+    if web_page.base_url in web_pages_with_keyword:
         web_page.status = Status.NO_MORE_NEEDED
         web_page.has_keyword = True
         return
@@ -75,16 +78,16 @@ def do_request(web_page: WebPage):
             web_page.has_keyword = find_keyword(body)
             # Mark the hierarchy has done
             if web_page.has_keyword:
-                parent = web_page
-                while parent.has_parent:
-                    parent = parent.parent
-                    parent.has_keyword = web_page.has_keyword
+                with lock_web_pages_with_keyword:
+                    web_pages_with_keyword.append(web_page.base_url)
             if web_page.depth < DEPTH_LIMIT:
-                web_page.recursive = False
+                print(web_page.depth)
                 new_links = find_links(body, web_page.url)
-                print('\n'.join(new_links))
+                print('\n'.join(list(new_links)[:1]))
                 print(web_page.url, len(new_links))
-                web_pages.extend(list(map(lambda url: WebPage(url, parent=web_page), new_links))[:])
+                web_pages.extend(list(
+                    map(lambda url: WebPage(url, depth=web_page.depth + 1, base_url=web_page.base_url), new_links))[:100])
+
         else:
             if web_page.status != Status.RETRY and response.status_code == 403:
                 web_page.status = Status.RETRY
@@ -106,7 +109,7 @@ if __name__ == '__main__':
     while any(not e.is_done for e in web_pages):
         if NUM_THREADS > 1:
             with ThreadPoolExecutor(max_workers=NUM_THREADS) as executor:
-                executor.map(do_request, web_pages)
+                executor.map(do_request, list(filter(lambda e: not e.is_done, web_pages)))
         else:
             for e in web_pages:
                 do_request(e)

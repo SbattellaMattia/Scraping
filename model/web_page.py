@@ -6,20 +6,17 @@ class Status(Enum):
     ERROR = 2,
     TIMEOUT = 3,
     RETRY = 4,
-    NO_MORE_NEEDED =5,
+    NO_MORE_NEEDED = 5,
 
 
 class WebPage:
-    def __init__(self, url: str, parent: 'WebPage' = None):
+    def __init__(self, url: str, depth: int = 1, base_url: str | None = None):
         self.url = url
-        self.parent: WebPage | None = parent
+        self.depth: int = depth
+        self.base_url: str = base_url if base_url is not None else url
         self.status: Status | None = None
         self.code: int | None = None
         self.has_keyword: bool = False
-
-    @property
-    def depth(self) -> int:
-        return (self.parent.depth if self.has_parent else 0) + 1
 
     @property
     def url(self) -> str:

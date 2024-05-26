@@ -1,72 +1,72 @@
-,_url,parent,status,code,has_keyword,recursive
-0,https://www.python.org,,Status.SUCCESS,200.0,True,False
-1,https://www.python.org/community/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.SUCCESS,200.0,False,
-2,https://www.python.org/about/quotes/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.SUCCESS,200.0,False,
-3,https://www.python.org/community/lists/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.SUCCESS,200.0,False,
-4,https://www.python.org/community/sigs/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.SUCCESS,200.0,False,
-5,https://www.python.org/privacy/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.SUCCESS,200.0,False,
-6,https://www.python.org/psf-landing/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.SUCCESS,200.0,False,
-7,https://www.python.org/success-stories/category/government/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.SUCCESS,200.0,False,
-8,https://www.python.org/dev/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.SUCCESS,200.0,False,
-9,https://www.python.org/dev/security/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.SUCCESS,200.0,False,
-10,https://www.python.org/events/python-events/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.SUCCESS,200.0,False,
-11,https://www.python.org/success-stories/category/scientific/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.SUCCESS,200.0,False,
-12,https://docs.python.org/3/license.html,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.SUCCESS,200.0,False,
-13,https://www.python.org/community/irc/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.SUCCESS,200.0,False,
-14,https://www.python.org/downloads/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.SUCCESS,200.0,True,
-15,https://www.python.org/downloads/windows/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-16,https://www.python.org/community/diversity/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-17,https://www.python.org//docs.python.org/3/tutorial/controlflow.html,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-18,https://www.python.org/events/python-user-group/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-19,https://www.python.org/success-stories/category/education/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-20,https://www.python.org/events/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-21,https://www.python.org/about/legal/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-22,https://www.python.org/psf/community-stories/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-23,https://www.python.org/psf/newsletter/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-24,https://www.python.org/success-stories/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-25,https://www.python.org/shell/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-26,https://www.python.org/events/python-user-group/1775/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-27,https://www.python.org/community-landing/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-28,https://www.python.org/doc/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-29,https://www.python.org/psf/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-30,https://www.python.org/blogs/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-31,https://www.python.org/success-stories/category/business/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-32,https://www.python.org/psf/donations/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-33,https://pyfound.blogspot.com/2024/05/the-psfs-2023-annual-impact-report-is.html,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-34,https://www.python.org/success-stories/building-an-open-source-and-cross-platform-azure-cli-with-python/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-35,https://www.python.org/events/python-user-group/1754/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-36,https://www.python.org/about/gettingstarted/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-37,https://pythoninsider.blogspot.com/2024/05/python-3130-beta-1-released.html,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-38,https://www.python.org/about/help/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-39,https://www.python.org/download/other/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-40,https://www.python.org/community/awards,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-41,https://www.python.org/about/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-42,https://www.python.org/doc/essays/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-43,https://www.python.org/community/logos/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-44,https://www.python.org/events/python-user-group/past/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-45,https://pyfound.blogspot.com/2024/05/psf-grants-program-2022-2023.html,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-46,https://www.python.org/doc/av,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-47,https://www.python.org/success-stories/category/engineering/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-48,https://pyfound.blogspot.com/2024/05/psf-board-election-dates-for-2024.html,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-49,https://www.python.org/about/apps/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-50,https://www.python.org/users/membership/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-51,https://www.python.org/downloads/source/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-52,https://www.python.org/community/workshops/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-53,https://www.python.org/psf/annual-report/2021/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-54,https://www.python.org/psf/conduct/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-55,https://www.python.org/success-stories/category/software-development/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-56,https://www.python.org/downloads/release/python-3123/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-57,https://www.python.org/events/calendars/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-58,https://www.python.org/community/forums/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-59,https://www.python.org/events/python-events/past/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-60,https://www.python.org/events/python-events/1728/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-61,https://www.python.org/dev/core-mentorship/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-62,https://www.python.org/success-stories/category/arts/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-63,https://www.python.org/dev/peps/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-64,https://www.python.org/downloads/macos/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-65,https://www.python.org/events/python-events/1772/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-66,https://www.python.org/psf/get-involved/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-67,https://www.python.org/jobs/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-68,https://www.python.org/events/python-events/1769/,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-69,https://www.python.org/about/apps,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
-70,https://www.python.org/download/alternatives,<model.web_page.WebPage object at 0x000002204D17B8B0>,Status.NO_MORE_NEEDED,,True,
+,_url,depth,base_url,status,code,has_keyword
+0,https://www.python.org,1,http://www.python.org,Status.SUCCESS,200.0,False
+1,https://www.python.org/psf/newsletter/,2,http://www.python.org,Status.SUCCESS,200.0,False
+2,https://www.python.org/community/irc/,2,http://www.python.org,Status.SUCCESS,200.0,False
+3,https://www.python.org/events/python-events/past/,2,http://www.python.org,Status.SUCCESS,200.0,False
+4,https://www.python.org/success-stories/category/software-development/,2,http://www.python.org,Status.SUCCESS,200.0,False
+5,https://www.python.org/community/diversity/,2,http://www.python.org,Status.SUCCESS,200.0,False
+6,https://www.python.org/psf/get-involved/,2,http://www.python.org,Status.SUCCESS,200.0,False
+7,https://www.python.org/events/calendars/,2,http://www.python.org,Status.SUCCESS,200.0,False
+8,https://docs.python.org/3/license.html,2,http://www.python.org,Status.SUCCESS,200.0,False
+9,https://www.python.org/events/python-user-group/,2,http://www.python.org,Status.SUCCESS,200.0,False
+10,https://www.python.org/shell/,2,http://www.python.org,Status.SUCCESS,200.0,False
+11,https://pythoninsider.blogspot.com/2024/05/python-3130-beta-1-released.html,2,http://www.python.org,Status.SUCCESS,200.0,False
+12,https://www.python.org/privacy/,2,http://www.python.org,Status.SUCCESS,200.0,False
+13,https://www.python.org/success-stories/category/government/,2,http://www.python.org,Status.SUCCESS,200.0,False
+14,https://www.python.org/community/lists/,2,http://www.python.org,Status.SUCCESS,200.0,False
+15,https://www.python.org/success-stories/category/scientific/,2,http://www.python.org,Status.SUCCESS,200.0,False
+16,https://www.python.org/community/sigs/,2,http://www.python.org,Status.SUCCESS,200.0,False
+17,https://www.python.org/doc/essays/,2,http://www.python.org,Status.SUCCESS,200.0,False
+18,https://www.python.org/events/python-events/,2,http://www.python.org,Status.SUCCESS,200.0,False
+19,https://www.python.org/downloads/source/,2,http://www.python.org,Status.SUCCESS,200.0,False
+20,https://www.python.org/community/logos/,2,http://www.python.org,Status.SUCCESS,200.0,False
+21,https://www.python.org/success-stories/category/engineering/,2,http://www.python.org,Status.SUCCESS,200.0,False
+22,https://www.python.org/success-stories/,2,http://www.python.org,Status.SUCCESS,200.0,False
+23,https://pyfound.blogspot.com/2024/05/psf-board-election-dates-for-2024.html,2,http://www.python.org,Status.SUCCESS,200.0,False
+24,https://www.python.org/events/python-events/1772/,2,http://www.python.org,Status.SUCCESS,200.0,False
+25,https://www.python.org/about/apps/,2,http://www.python.org,Status.SUCCESS,200.0,False
+26,https://www.python.org/psf/donations/,2,http://www.python.org,Status.SUCCESS,200.0,False
+27,https://www.python.org/dev/security/,2,http://www.python.org,Status.SUCCESS,200.0,False
+28,https://www.python.org/events/python-user-group/1754/,2,http://www.python.org,Status.SUCCESS,200.0,False
+29,https://www.python.org/download/other/,2,http://www.python.org,Status.SUCCESS,200.0,False
+30,https://www.python.org/about/,2,http://www.python.org,Status.SUCCESS,200.0,False
+31,https://www.python.org/community-landing/,2,http://www.python.org,Status.SUCCESS,200.0,False
+32,https://www.python.org//docs.python.org/3/tutorial/controlflow.html,2,http://www.python.org,Status.SUCCESS,404.0,False
+33,https://www.python.org/success-stories/category/arts/,2,http://www.python.org,Status.SUCCESS,200.0,False
+34,https://pyfound.blogspot.com/2024/05/psf-grants-program-2022-2023.html,2,http://www.python.org,Status.SUCCESS,200.0,False
+35,https://www.python.org/about/quotes/,2,http://www.python.org,Status.SUCCESS,200.0,False
+36,https://www.python.org/success-stories/building-an-open-source-and-cross-platform-azure-cli-with-python/,2,http://www.python.org,Status.SUCCESS,200.0,False
+37,https://www.python.org/psf/community-stories/,2,http://www.python.org,Status.SUCCESS,200.0,False
+38,https://www.python.org/downloads/,2,http://www.python.org,Status.SUCCESS,200.0,True
+39,https://www.python.org/downloads/release/python-3123/,2,http://www.python.org,Status.SUCCESS,200.0,False
+40,https://www.python.org/doc/av,2,http://www.python.org,Status.SUCCESS,200.0,False
+41,https://pyfound.blogspot.com/2024/05/the-psfs-2023-annual-impact-report-is.html,2,http://www.python.org,Status.SUCCESS,200.0,False
+42,https://www.python.org/success-stories/category/business/,2,http://www.python.org,Status.NO_MORE_NEEDED,,True
+43,https://www.python.org/about/help/,2,http://www.python.org,Status.NO_MORE_NEEDED,,True
+44,https://www.python.org/psf/,2,http://www.python.org,Status.NO_MORE_NEEDED,,True
+45,https://www.python.org/about/legal/,2,http://www.python.org,Status.NO_MORE_NEEDED,,True
+46,https://www.python.org/download/alternatives,2,http://www.python.org,Status.NO_MORE_NEEDED,,True
+47,https://www.python.org/about/gettingstarted/,2,http://www.python.org,Status.NO_MORE_NEEDED,,True
+48,https://www.python.org/downloads/windows/,2,http://www.python.org,Status.NO_MORE_NEEDED,,True
+49,https://www.python.org/community/awards,2,http://www.python.org,Status.NO_MORE_NEEDED,,True
+50,https://www.python.org/success-stories/category/education/,2,http://www.python.org,Status.NO_MORE_NEEDED,,True
+51,https://www.python.org/psf/conduct/,2,http://www.python.org,Status.NO_MORE_NEEDED,,True
+52,https://www.python.org/jobs/,2,http://www.python.org,Status.NO_MORE_NEEDED,,True
+53,https://www.python.org/events/,2,http://www.python.org,Status.NO_MORE_NEEDED,,True
+54,https://www.python.org/events/python-events/1728/,2,http://www.python.org,Status.NO_MORE_NEEDED,,True
+55,https://www.python.org/events/python-user-group/past/,2,http://www.python.org,Status.NO_MORE_NEEDED,,True
+56,https://www.python.org/downloads/macos/,2,http://www.python.org,Status.NO_MORE_NEEDED,,True
+57,https://www.python.org/events/python-events/1769/,2,http://www.python.org,Status.NO_MORE_NEEDED,,True
+58,https://www.python.org/dev/peps/,2,http://www.python.org,Status.NO_MORE_NEEDED,,True
+59,https://www.python.org/doc/,2,http://www.python.org,Status.NO_MORE_NEEDED,,True
+60,https://www.python.org/community/workshops/,2,http://www.python.org,Status.NO_MORE_NEEDED,,True
+61,https://www.python.org/psf-landing/,2,http://www.python.org,Status.NO_MORE_NEEDED,,True
+62,https://www.python.org/dev/,2,http://www.python.org,Status.NO_MORE_NEEDED,,True
+63,https://www.python.org/community/forums/,2,http://www.python.org,Status.NO_MORE_NEEDED,,True
+64,https://www.python.org/blogs/,2,http://www.python.org,Status.NO_MORE_NEEDED,,True
+65,https://www.python.org/dev/core-mentorship/,2,http://www.python.org,Status.NO_MORE_NEEDED,,True
+66,https://www.python.org/users/membership/,2,http://www.python.org,Status.NO_MORE_NEEDED,,True
+67,https://www.python.org/about/apps,2,http://www.python.org,Status.NO_MORE_NEEDED,,True
+68,https://www.python.org/community/,2,http://www.python.org,Status.NO_MORE_NEEDED,,True
+69,https://www.python.org/events/python-user-group/1775/,2,http://www.python.org,Status.NO_MORE_NEEDED,,True
+70,https://www.python.org/psf/annual-report/2021/,2,http://www.python.org,Status.NO_MORE_NEEDED,,True
