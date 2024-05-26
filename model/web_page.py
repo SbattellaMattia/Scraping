@@ -9,9 +9,9 @@ class Status(Enum):
 
 
 class WebPage:
-    def __init__(self, url: str, recursive: bool):
+    def __init__(self, url: str, depth: int = 1):
         self.url = url
-        self.recursive: bool = recursive
+        self.depth: int = depth
         self.status: Status | None = None
         self.code: int | None = None
         self.has_keyword: bool = False

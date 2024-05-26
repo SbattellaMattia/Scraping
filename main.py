@@ -7,15 +7,19 @@ from bs4 import BeautifulSoup, SoupStrainer
 
 from model.web_page import WebPage, Status
 
-start_time = time.time()
+# The keywords to look for in web pages
 KEYWORDS = ['blockchain', 'smart contract']
-TIMEOUT_LIMIT = 5
+# The timeout of each GET request
+TIME_LIMIT = 5
+# The limit of recursive analysis of links within pages
+DEPTH_LIMIT = 2
+start_time = time.time()
 
 
 def find_keyword(html: str) -> bool:
     """
     The policy to determine whether the site cites the blockchain technology
-    :param html: the the web page to analyse
+    :param html: the web page to analyse
     :return: whether the site cites the blockchain technology
     """
     return any(e in html.lower() for e in KEYWORDS)
@@ -51,19 +55,19 @@ def print_progress() -> None:
 
 def do_request(web_page: WebPage):
     try:
-        response = requests.get(web_page.url, timeout=TIMEOUT_LIMIT, verify=False, headers={
+        response = requests.get(web_page.url, timeout=TIME_LIMIT, verify=False, headers={
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0'})
         web_page.status = Status.SUCCESS
         web_page.code = response.status_code
         body = response.text.split('<body>')[1].split('')[0] if all(
-            e in response.text for e in ['<body>', '</body>']) else str(BeautifulSoup(response.text, 'lxml').body)
+            e in response.text for e in ['<body', '</body>']) else str(BeautifulSoup(response.text, 'lxml').body)
         if response.status_code == 200:
             web_page.has_keyword = find_keyword(body)
-            if web_page.recursive:
+            if web_page.depth < DEPTH_LIMIT:
                 web_page.recursive = False
                 new_links = find_links(body, web_page.url)
                 print(web_page.url, len(new_links))
-                web_pages.extend(list(map(lambda url: WebPage(url, False), new_links))[:10])
+                web_pages.extend(list(map(lambda url: WebPage(url, web_page.depth + 1), new_links))[:10])
         else:
             if web_page.status != Status.RETRY and response.status_code == 403:
                 web_page.status = Status.RETRY
@@ -78,7 +82,7 @@ def do_request(web_page: WebPage):
 if __name__ == '__main__':
     imprese_df = pd.read_excel('Imprese.xlsx')
     web_pages = list(
-        map(lambda url: WebPage(url, True), set(imprese_df['Website'].tolist()[:])))
+        map(lambda url: WebPage(url), set(imprese_df['Website'].tolist()[:])))
     while any(not e.is_done for e in web_pages):
         with ThreadPoolExecutor(max_workers=64) as executor:
             executor.map(do_request, web_pages[:])
