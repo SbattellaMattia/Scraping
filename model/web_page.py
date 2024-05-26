@@ -27,7 +27,8 @@ class WebPage:
         """
         Check and fix any URLs that are incorrectly formatted
         """
-        self._url = value.replace(' ', '').replace('http://', 'https://')
+        self._url = value.split(' ')[0].replace(' ', '').replace('http://', 'https://')
+        self._url = self._url[:-1] if self._url.endswith('/') else self._url
         if not self._url.startswith('https://'):
             self._url = f'https://{self._url}'
         if '.' not in self._url.replace('www.', ''):
@@ -46,3 +47,7 @@ class WebPage:
     @property
     def has_parent(self) -> bool:
         return self.parent is not None
+
+    @property
+    def is_pdf(self):
+        return '.pdf' in self.url
