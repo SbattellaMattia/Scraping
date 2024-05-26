@@ -13,6 +13,8 @@ KEYWORDS = ['blockchain', 'smart contract']
 TIME_LIMIT = 5
 # The limit of recursive analysis of links within pages
 DEPTH_LIMIT = 2
+# How many thread are being used
+NUM_THREADS = 1
 start_time = time.time()
 
 
@@ -80,14 +82,20 @@ def do_request(web_page: WebPage):
 
 
 if __name__ == '__main__':
+    # Retrieving the web pages to analyze
     imprese_df = pd.read_excel('Imprese.xlsx')
     web_pages = list(
         map(lambda url: WebPage(url), set(imprese_df['Website'].tolist()[:])))
+    # Request processing with multithreading
     while any(not e.is_done for e in web_pages):
-        with ThreadPoolExecutor(max_workers=64) as executor:
-            executor.map(do_request, web_pages[:])
+        if NUM_THREADS > 1:
+            with ThreadPoolExecutor(max_workers=NUM_THREADS) as executor:
+                executor.map(do_request, web_pages)
+        else:
+            for e in web_pages:
+                do_request(e)
 
-    # Tempistiche
+    # Print out stats
     print("--- %s seconds ---" % (time.time() - start_time))
     print(
         f"\nTotali: {len(web_pages)}"
@@ -96,6 +104,6 @@ if __name__ == '__main__':
         f"\nTimeout: {len(list(filter(lambda e: e.status == Status.TIMEOUT, web_pages)))}"
         f"\nFound: {len(list(filter(lambda e: e.has_keyword, web_pages)))}"
         f"\nWeb page is down: {len(list(filter(lambda e: e.has_error, web_pages)))}")
-
+    # Saving analysis result to CSV file
     pd.DataFrame([vars(e) for e in (list(filter(lambda e: e.status == Status.SUCCESS, web_pages)))]).to_csv(
         'output.csv')
