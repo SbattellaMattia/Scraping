@@ -10,7 +10,8 @@ class Status(Enum):
 
 
 class WebPage:
-    def __init__(self, url: str, depth: int = 1, base_url: str | None = None):
+    def __init__(self, url: str, depth: int = 1, base_url: str | None = None,name:str|None=None):
+        self.name:str|None=name
         self.url = url
         self.depth: int = depth
         self.base_url: str = base_url if base_url is not None else url

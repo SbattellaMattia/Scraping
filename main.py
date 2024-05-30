@@ -98,7 +98,7 @@ def do_request(web_page: WebPage):
                     new_links = find_links(body, web_page.url)
                     print(web_page.url, len(new_links))
                     web_pages.extend(list(
-                        map(lambda url: WebPage(url, depth=web_page.depth + 1, base_url=web_page.base_url), new_links))[
+                        map(lambda url: WebPage(url, depth=web_page.depth + 1, base_url=web_page.base_url, name=web_page.name), new_links))[
                                      :])
     except requests.exceptions.Timeout:
         web_page.status = Status.TIMEOUT
@@ -110,9 +110,10 @@ def do_request(web_page: WebPage):
 
 if __name__ == '__main__':
     # Retrieving the web pages to analyze
-    imprese_df = pd.read_excel('Imprese.xlsx')
+    # imprese_df = pd.read_excel('Imprese.xlsx')
+    imprese_df = pd.read_csv('scraper/output.csv')
     web_pages = list(
-        map(lambda url: WebPage(url), set(imprese_df['Website'].tolist()[:])))
+        map(lambda name, url: WebPage(url,name=name), imprese_df['name'].tolist(),imprese_df['url'].tolist()))
     # Request processing with multithreading
     while any(not e.is_done for e in web_pages):
         if NUM_THREADS > 1:
@@ -124,7 +125,7 @@ if __name__ == '__main__':
         # Saving analysis result to CSV file
         print('SAVING...')
         pd.DataFrame([vars(e) for e in web_pages]).to_csv(
-            'output.csv')
+            'output2.csv')
 
     # Print out stats
     print("--- %s seconds ---" % (time.time() - start_time))
