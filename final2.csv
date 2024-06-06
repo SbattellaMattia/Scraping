@@ -1,4 +1,9 @@
 Unnamed: 0_x,name_x,url,Unnamed: 0_y,name_y,_url,depth,base_url,status,code,has_keyword
+1153,L.m. Di Marti Luigi,https://www.remax.it/trova/agenti-agenzie/agente/luigi-marti,1153,L.m. Di Marti Luigi,https://www.remax.it/trova/agenti-agenzie/agente/luigi-marti,1,https://www.remax.it/trova/agenti-agenzie/agente/luigi-marti,Status.SUCCESS,200,False
+1265,MANUFACTURE DE S. LOUIS VUITTON S.R.L.,https://us.louisvuitton.com/eng-us/magazine/articles/louis-vuitton-manufactures,1265,MANUFACTURE DE S. LOUIS VUITTON S.R.L.,https://us.louisvuitton.com/eng-us/magazine/articles/louis-vuitton-manufactures,1,https://us.louisvuitton.com/eng-us/magazine/articles/louis-vuitton-manufactures,Status.SUCCESS,200,False
+,Tacchificio Villa Cortese,https://tvcgroup.it/sostenibilita/prodotto-e-tecnologie/,,,https://www.ansa.it/industry_4_0/notizie/storie_impresa/2021/04/29/arrivano-le-scarpe-di-lusso-con-tacchi-tracciati-su-blockchain_caeeeae2-7f00-4476-9bca-16b9e4681b5a.html,2,https://tvcgroup.it/sostenibilita/prodotto-e-tecnologie/,,,True
+,Peron,,,,https://www.peronshoes.it/technology/,,,,,True
+1381,SWINGER INTERNATIONAL S.P.A.,https://it.linkedin.com/company/swinger-international,1381,SWINGER INTERNATIONAL S.P.A.,https://it.linkedin.com/company/swinger-international,1,https://it.linkedin.com/company/swinger-international,Status.SUCCESS,200,False
 0,Massolo Calzature Di Massolo Carlo E Carmelina S.n.c.,https://www.ufficiocamerale.it/7401/massolo-calzature-di-massolo-carlo-e-carmelina-snc,,,,,,,,
 1,Alexandria Spa,https://baliansprings.com/,,,,,,,,
 2,Tecno Gi Spa,https://www.tecnogi.com/en/,,,,,,,,
@@ -1152,7 +1157,6 @@ Unnamed: 0_x,name_x,url,Unnamed: 0_y,name_y,_url,depth,base_url,status,code,has_
 1150,Flying Dance Srl,https://www.misterimprese.it/puglia/lecce/taviano/calzature-e-scarpe-su-misura-e-calzolai/1905097.html,,,,,,,,
 1151,Calzaturificio Dea Srl,https://primafirenze.it/cronaca/calzaturificio-distrutto-dalle-fiamme-a-capannori/,,,,,,,,
 1152,Degi Shoes Di Defazio Giuseppe,https://www.yelp.com/biz/degi-shoes-di-defazio-giuseppe-barletta,,,,,,,,
-1153,L.m. Di Marti Luigi,https://www.remax.it/trova/agenti-agenzie/agente/luigi-marti,1153.0,L.m. Di Marti Luigi,https://www.remax.it/trova/agenti-agenzie/agente/luigi-marti,1.0,https://www.remax.it/trova/agenti-agenzie/agente/luigi-marti,Status.SUCCESS,200.0,True
 1154,Pellegrino Michele,https://www.facebook.com/public/Michele-Pellegrino/,,,,,,,,
 1155,Calzaturificio Noisy Dei F.lli Nugnes S.n.c. Di Pasquale & Giovanni Nugnes,https://it.nugnes1920.com/collections/calzature-donna,,,,,,,,
 1156,Suolificio Rodal Di Rodriquez Elena,http://www.aziendeinrete.it/puglia/andria-barletta-trani/barletta/calzaturifici-e-calzolai-forniture/097091064068088096091.html,,,,,,,,
@@ -1264,7 +1268,6 @@ Unnamed: 0_x,name_x,url,Unnamed: 0_y,name_y,_url,depth,base_url,status,code,has_
 1262,CONCERIA PASUBIO S.P.A.,https://www.pasubio.com/,,,,,,,,
 1263,GIORGIO ARMANI RETAIL S.R.L.,https://www.armani.com/,,,,,,,,
 1264,IN.CO INDUSTRIA CONFEZIONI S.P.A.,https://www.grupporm.com/case-histories/in-co-industria-confezioni-s-p-a/,,,,,,,,
-1265,MANUFACTURE DE S. LOUIS VUITTON S.R.L.,https://us.louisvuitton.com/eng-us/magazine/articles/louis-vuitton-manufactures,1265.0,MANUFACTURE DE S. LOUIS VUITTON S.R.L.,https://us.louisvuitton.com/eng-us/magazine/articles/louis-vuitton-manufactures,1.0,https://us.louisvuitton.com/eng-us/magazine/articles/louis-vuitton-manufactures,Status.SUCCESS,200.0,True
 1266,OFFWHITE OPERATING S.R.L,https://www.off---white.com/en-us/customer-service-feed/corporate-information,,,,,,,,
 1267,FURLA S.P.A.,https://www.furla.com/,,,,,,,,
 1268,GEOX RETAIL S.R.L.,https://www.geox.com/it-IT/,,,,,,,,
@@ -1380,7 +1383,6 @@ Unnamed: 0_x,name_x,url,Unnamed: 0_y,name_y,_url,depth,base_url,status,code,has_
 1378,G & B NEGOZIO S.P.A.,https://www.gebnegozionline.com/,,,,,,,,
 1379,VF ITALIA S.R.L.,https://www.vfc.com/,,,,,,,,
 1380,SANTONI SOCIETA’ PER AZIONI,http://www.santoni.com/,,,,,,,,
-1381,SWINGER INTERNATIONAL S.P.A.,https://it.linkedin.com/company/swinger-international,1381.0,SWINGER INTERNATIONAL S.P.A.,https://it.linkedin.com/company/swinger-international,1.0,https://it.linkedin.com/company/swinger-international,Status.SUCCESS,200.0,True
 1382,MARIO LEVI S.P.A.,https://mariolevi.com/en/,,,,,,,,
 1383,G & B NEGOZIO SRL COURMAYEUR,https://www.gebnegozionline.com/,,,,,,,,
 1384,DIAMANT S.R.L.,https://dmtcycling.com/en-us/pages/about-dmt,,,,,,,,

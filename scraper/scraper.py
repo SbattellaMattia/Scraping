@@ -40,7 +40,7 @@ for sub_names in tqdm(split(names[:], 100)):
     with ThreadPoolExecutor(max_workers=1) as executor:
         executor.map(search_duckduckgo, sub_names)
     pd.DataFrame([vars(e) for e in results]).to_csv(
-        'scraper/output2.csv')
+        'scraper/output2-2.csv')
 
 # for name in tqdm(names):
 #     with open('urls.txt', 'a') as file:

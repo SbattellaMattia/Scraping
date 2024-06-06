@@ -113,7 +113,7 @@ if __name__ == '__main__':
     # imprese_df = pd.read_excel('Imprese.xlsx')
     imprese_df = pd.read_csv('scraper/output.csv')
     web_pages = list(
-        map(lambda name, url: WebPage(url,name=name), imprese_df['name'].tolist(),imprese_df['url'].tolist()))
+        map(lambda name, url: WebPage(url,name=name), imprese_df['name'].tolist(),imprese_df['url'].tolist()))[:]
     # Request processing with multithreading
     while any(not e.is_done for e in web_pages):
         if NUM_THREADS > 1:
@@ -125,7 +125,7 @@ if __name__ == '__main__':
         # Saving analysis result to CSV file
         print('SAVING...')
         pd.DataFrame([vars(e) for e in web_pages]).to_csv(
-            'output2.csv')
+            'output2-2.csv')
 
     # Print out stats
     print("--- %s seconds ---" % (time.time() - start_time))
